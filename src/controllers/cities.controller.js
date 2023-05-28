@@ -13,12 +13,9 @@ export async function getCity(req, res) {
 export async function postCity(req, res) {
     const {name, state} = req.body
     try {
-        const user = await postCityRep(name,state)
+        const user = await getCityName(name,state)
         if(user.rows[0]) return res.status(409).send("Esta cidade já existe!")
-
-        const insert = await db.query(`
-            INSERT INTO cities (name, state)
-            VALUES ($1, $2);`,[name, state])
+        const insert = await postCityRep(name,state)
         res.status(201).send("Created")
     } catch (err) {
         res.status(500).send(err.message)
