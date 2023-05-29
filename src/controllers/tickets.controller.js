@@ -1,5 +1,5 @@
 import { db } from "../database/connection.js"
-import { getTicketByIdRep, getTickets, postTicketRep } from "../repositories/tickets.repository.js"
+import { getTicketByIdRep, getTicketIdRep, getTickets, postTicketRep } from "../repositories/tickets.repository.js"
 
 
 export async function getTicket(req, res) {
@@ -21,6 +21,15 @@ export async function getTicketById(req, res) {
     }
 }
 
+export async function getTicketId(req, res) {
+    const {id} = req.params
+    try {
+        const response = await getTicketIdRep(id)
+        res.send(response.rows)
+    } catch (err) {
+        res.status(500).send(err.message)
+    }
+}
 export async function postTicket(req, res) {
     const {originId,destinationId,departureTime,arrivalTime,cia,price} = req.body
     try {
