@@ -1,5 +1,5 @@
 import { db } from "../database/connection.js"
-import { getCities, getCityByIdRep, postCityRep } from "../repositories/cities.repository.js"
+import { getCities, getCityByIdRep, getCityName, postCityRep } from "../repositories/cities.repository.js"
 
 export async function getCity(req, res) {
     try {
