@@ -4,6 +4,10 @@ export async function getCities () {
 	return await db.query(`SELECT * FROM cities;`)
 }
 
+export async function getCityByIdRep (id) {
+	return await db.query(`SELECT * FROM cities WHERE id=$1;`,[id])
+}
+
 export async function getCityName(name, state) {
 	return await db.query(`SELECT * FROM cities WHERE name=$1 AND state=$2;`,[name, state])
 }

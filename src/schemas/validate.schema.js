@@ -20,3 +20,8 @@ export const postTicketObject = joi.object({
     cia: joi.string().required(),
     price: joi.number().required()
   })
+
+export const postCommodityObject = joi.object({
+    hotelId: joi.number().required(),
+    name: joi.string().required().max(20)
+  })
